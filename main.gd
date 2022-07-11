@@ -2,7 +2,6 @@ extends Node2D
 
 var CircleColor
 var points = 1000
-var CircleNumber = 0
 
 func _ready():
 	spawn_circle()
@@ -11,39 +10,33 @@ func _process(_delta):
 	add_points()
 	$Label.text = "Points: " + str(points)
 	
+	
 
 func add_points():
 	if CircleColor == "Red":
-		if Input.is_action_pressed("1"):
+		if Input.is_action_just_pressed("1"):
 			points += 1000
 			spawn_circle()
-		elif Input.is_action_pressed("2"):
+		elif Input.is_action_just_pressed("2"):
 			points -= 1000
-		elif Input.is_action_pressed("3"):
+		elif Input.is_action_just_pressed("3"):
 			points -= 1000
-		else:
-			yield(get_tree().create_timer(0.1), "timeout")
-			points -= 10
 	elif CircleColor == "Yellow":
-		if Input.is_action_pressed("2"):
+		if Input.is_action_just_pressed("1"):
+			points -= 1000
+		elif Input.is_action_just_pressed("2"):
 			points += 1000
 			spawn_circle()
-		elif Input.is_action_pressed("2"):
+		elif Input.is_action_just_pressed("3"):
 			points -= 1000
-		elif Input.is_action_pressed("3"):
-			points -= 1000
-		else:
-			points -= 1
 	elif CircleColor == "Green":
-		if Input.is_action_pressed("3"):
+		if Input.is_action_just_pressed("1"):
+			points -= 1000
+		elif Input.is_action_just_pressed("2"):
+			points -= 1000
+		elif Input.is_action_just_pressed("3"):
 			points += 1000
 			spawn_circle()
-		elif Input.is_action_pressed("2"):
-			points -= 1000
-		elif Input.is_action_pressed("3"):
-			points -= 1000
-		else:
-			points -= 1
 
 
 
