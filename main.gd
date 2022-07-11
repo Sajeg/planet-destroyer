@@ -22,7 +22,8 @@ func add_points():
 		elif Input.is_action_pressed("3"):
 			points -= 1000
 		else:
-			points -= 1
+			yield(get_tree().create_timer(0.1), "timeout")
+			points -= 10
 	elif CircleColor == "Yellow":
 		if Input.is_action_pressed("2"):
 			points += 1000
