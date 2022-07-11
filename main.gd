@@ -35,9 +35,11 @@ func timer():
 	for i in 59:
 		yield(get_tree().create_timer(1), "timeout")
 		if 59-i < 10:
-			$Label.text = "0" + str(59-i)
+			$Background/TimerShow.text = "0" + str(59-i)
 		else:
-			$Label.text = str(59-i)
+			$Background/TimerShow.text = str(59-i)
+		if i == 59:
+			get_tree().change_scene("res://GameOver.tscn")
 			
 
 
