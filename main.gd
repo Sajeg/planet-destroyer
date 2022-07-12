@@ -16,6 +16,7 @@ func _ready():
 	timer()
 
 func _process(_delta):
+	Main.points = points
 	add_points()
 	$Label.text = "Points: " + str(points)
 	if CircleColor == "Red":
@@ -34,11 +35,12 @@ func _process(_delta):
 func timer():
 	for i in 59:
 		yield(get_tree().create_timer(1), "timeout")
+		print(str(i))
 		if 59-i < 10:
 			$Background/TimerShow.text = "0" + str(59-i)
 		else:
 			$Background/TimerShow.text = str(59-i)
-		if i == 59:
+		if i == 58:
 			get_tree().change_scene("res://GameOver.tscn")
 			
 
