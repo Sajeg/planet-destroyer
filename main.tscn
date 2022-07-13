@@ -1,14 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
-[ext_resource path="res://paths/path0.res" type="Curve2D" id=2]
-[ext_resource path="res://paths/path9.res" type="Curve2D" id=3]
-[ext_resource path="res://paths/path4.res" type="Curve2D" id=4]
+[ext_resource path="res://paths/path_green4.tres" type="Curve2D" id=2]
+[ext_resource path="res://paths/path_red4.tres" type="Curve2D" id=3]
+[ext_resource path="res://paths/path_yellow4.tres" type="Curve2D" id=4]
 [ext_resource path="res://Assets/font/Roboto-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/planets/dryhotplanet32x32.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Space Background.png" type="Texture" id=7]
+[ext_resource path="res://Assets/planets/exoplanet32x32.png" type="Texture" id=8]
+[ext_resource path="res://Assets/planets/dryvenuslikeplane32x32t.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 860
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
 font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]
@@ -39,26 +46,51 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Red" type="ColorRect" parent="."]
-margin_left = 24.0
-margin_top = 17.0
-margin_right = 64.0
-margin_bottom = 57.0
-color = Color( 0.945098, 0.0431373, 0.0431373, 1 )
+[node name="Red" type="Node2D" parent="."]
 
-[node name="green" type="ColorRect" parent="."]
-margin_left = 26.0
-margin_top = 524.0
-margin_right = 66.0
-margin_bottom = 564.0
-color = Color( 0.10463, 0.65625, 0.0897217, 1 )
+[node name="Red" type="Sprite" parent="Red"]
+position = Vector2( 50, 51 )
+rotation = 1.5708
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
 
-[node name="yellow" type="ColorRect" parent="."]
+[node name="Label" type="Label" parent="Red"]
 margin_left = 26.0
-margin_top = 211.0
-margin_right = 66.0
-margin_bottom = 251.0
-color = Color( 0.945098, 0.760784, 0.0431373, 1 )
+margin_top = 4.0
+margin_right = 72.0
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+
+[node name="yellow" type="Node2D" parent="."]
+
+[node name="yellow" type="Sprite" parent="yellow"]
+position = Vector2( 51, 302 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
+
+[node name="Label2" type="Label" parent="yellow"]
+margin_left = 29.0
+margin_top = 253.0
+margin_right = 75.0
+margin_bottom = 348.0
+custom_fonts/font = SubResource( 2 )
+text = "2"
+
+[node name="green" type="Node2D" parent="."]
+
+[node name="green" type="Sprite" parent="green"]
+position = Vector2( 55, 530 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )
+
+[node name="Label3" type="Label" parent="green"]
+margin_left = 33.0
+margin_top = 486.0
+margin_right = 79.0
+margin_bottom = 581.0
+custom_fonts/font = SubResource( 2 )
+text = "3"
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -72,47 +104,39 @@ text = "Punkte:"
 [node name="RedObject" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="RedObject"]
-curve = ExtResource( 2 )
+curve = ExtResource( 3 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="RedObject/Path2D"]
-position = Vector2( 617, 21 )
-rotation = 0.771396
+position = Vector2( 1002, 569 )
+rotation = -1.74107
 
-[node name="RedObject" type="ColorRect" parent="RedObject/Path2D/PathFollow2D"]
-margin_left = -19.0
-margin_top = -17.0
-margin_right = 21.0
-margin_bottom = 23.0
-color = Color( 0.945098, 0.0431373, 0.0431373, 1 )
+[node name="Dryhotplanet32X32" type="Sprite" parent="RedObject/Path2D/PathFollow2D"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
 
 [node name="YellowObject" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="YellowObject"]
-curve = ExtResource( 3 )
+curve = ExtResource( 4 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="YellowObject/Path2D"]
-position = Vector2( 1014, 277 )
-rotation = -3.07436
+position = Vector2( 1000, 105 )
+rotation = 2.24285
 
-[node name="yellowObject" type="ColorRect" parent="YellowObject/Path2D/PathFollow2D"]
-margin_left = -15.7174
-margin_top = -17.7471
-margin_right = 24.2826
-margin_bottom = 22.2529
-color = Color( 0.945098, 0.760784, 0.0431373, 1 )
+[node name="Dryvenuslikeplane32X32t" type="Sprite" parent="YellowObject/Path2D/PathFollow2D"]
+rotation = -3.14159
+scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
 
 [node name="GreenObject" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="GreenObject"]
-curve = ExtResource( 4 )
+curve = ExtResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="GreenObject/Path2D"]
-position = Vector2( 358, 564 )
-rotation = -0.342243
+position = Vector2( 349, 3 )
+rotation = 1.52052
 
-[node name="greenObject" type="ColorRect" parent="GreenObject/Path2D/PathFollow2D"]
-margin_left = -17.2128
-margin_top = -16.9623
-margin_right = 22.7872
-margin_bottom = 23.0377
-color = Color( 0.054902, 0.635294, 0.0392157, 1 )
+[node name="Exoplanet32X32" type="Sprite" parent="GreenObject/Path2D/PathFollow2D"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )

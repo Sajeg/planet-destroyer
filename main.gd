@@ -74,7 +74,7 @@ func add_points():
 
 
 func spawn_circle():
-	var rand_path = randi()%10
+	var rand_path = randi()%5
 
 	var rand = randi()%3
 	if rand == 0:
@@ -86,7 +86,7 @@ func spawn_circle():
 		$YellowObject.visible = false
 		$GreenObject.visible = false
 		$RedObject/Path2D/PathFollow2D.unit_offset = 0
-		$RedObject/Path2D.curve =  load("res://paths/path" + str(rand_path) + ".res")
+		$RedObject/Path2D.curve =  load("res://paths/path_red" + str(rand_path) + ".tres")
 	elif rand == 1:
 		if CircleColor == "Yellow":
 			spawn_circle()
@@ -96,7 +96,7 @@ func spawn_circle():
 		$YellowObject.visible = true
 		$GreenObject.visible = false
 		$YellowObject/Path2D/PathFollow2D.unit_offset = 0
-		$YellowObject/Path2D.curve = load("res://paths/path" + str(rand_path) + ".res")
+		$YellowObject/Path2D.curve = load("res://paths/path_yellow" + str(rand_path) + ".tres")
 	elif rand == 2:
 		if CircleColor == "Green":
 			spawn_circle()
@@ -106,4 +106,4 @@ func spawn_circle():
 		$YellowObject.visible = false
 		$GreenObject.visible = true
 		$GreenObject/Path2D/PathFollow2D.unit_offset = 0
-		$GreenObject/Path2D.curve = load("res://paths/path" + str(rand_path) + ".res")
+		$GreenObject/Path2D.curve = load("res://paths/path_green" + str(rand_path) + ".tres")
