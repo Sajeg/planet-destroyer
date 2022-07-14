@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/A Long Way.wav-d1aeb5337354ed6770c7f19079cd74b5.sample"
+
+[deps]
+
+source_file="res://Assets/A Long Way.wav"
+dest_files=[ "res://.import/A Long Way.wav-d1aeb5337354ed6770c7f19079cd74b5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

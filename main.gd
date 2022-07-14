@@ -3,6 +3,7 @@ extends Node2D
 onready var yellow_path_follow = get_node("YellowObject/Path2D/PathFollow2D")
 onready var red_path_follow= get_node("RedObject/Path2D/PathFollow2D")
 onready var green_path_follow = get_node("GreenObject/Path2D/PathFollow2D")
+onready var animation = get_node("AnimationPlayer")
 
 var CircleColor
 var points = 1000
@@ -10,8 +11,14 @@ var points = 1000
 var points_decrease = 4000
 var points_increase = 10000
 
+var red_move = true
+var green_move = true
+var yellow_move = true
 
 func _ready():
+	$RedObject/Path2D/PathFollow2D/Explosion.visible = false
+	$GreenObject/Path2D/PathFollow2D/Explosion.visible = false
+	$YellowObject/Path2D/PathFollow2D/Explosion.visible = false
 	spawn_circle()
 	timer()
 
@@ -22,13 +29,19 @@ func _process(_delta):
 	if CircleColor == "Red":
 		if red_path_follow.unit_offset >= 0.95:
 			return
+		elif red_move == false:
+			return
 		red_path_follow.offset += 1
 	if CircleColor == "Green":
 		if green_path_follow.unit_offset >= 0.95:
 			return
+		elif green_move == false:
+			return
 		green_path_follow.offset += 1
 	if CircleColor == "Yellow":
 		if yellow_path_follow.unit_offset >= 0.95:
+			return
+		elif yellow_move == false:
 			return
 		yellow_path_follow.offset += 1
 
@@ -49,7 +62,13 @@ func add_points():
 	if CircleColor == "Red":
 		if Input.is_action_just_pressed("1"):
 			points += round(points_increase/(red_path_follow.unit_offset + 1))
+			red_move = false
+			$RedObject/Path2D/PathFollow2D/Explosion.rotation = 0
+			animation.play("red")
+			yield(get_tree().create_timer(1.5), "timeout")
 			spawn_circle()
+			$RedObject/Path2D/PathFollow2D/Dryhotplanet32X32.texture = load("res://Assets/planets/dryhotplanet32X32.png")
+			red_move = true
 		elif Input.is_action_just_pressed("2"):
 			points -= points_decrease
 		elif Input.is_action_just_pressed("3"):
@@ -59,7 +78,13 @@ func add_points():
 			points -= points_decrease
 		elif Input.is_action_just_pressed("2"):
 			points += round(points_increase/(yellow_path_follow.unit_offset + 1))
+			yellow_move = false
+			$YellowObject/Path2D/PathFollow2D/Explosion.rotation = 0
+			animation.play("yellow")
+			yield(get_tree().create_timer(1.5), "timeout")
 			spawn_circle()
+			$YellowObject/Path2D/PathFollow2D/Dryvenuslikeplane32X32t.texture = load("res://Assets/planets/dryvenuslikeplane32X32t.png")
+			yellow_move = true
 		elif Input.is_action_just_pressed("3"):
 			points -= points_decrease
 	elif CircleColor == "Green":
@@ -69,7 +94,13 @@ func add_points():
 			points -= points_decrease
 		elif Input.is_action_just_pressed("3"):
 			points += round(points_increase/(green_path_follow.unit_offset + 1))
+			green_move = false
+			$GreenObject/Path2D/PathFollow2D/Explosion.rotation = 0
+			animation.play("green")
+			yield(get_tree().create_timer(1.5), "timeout")
 			spawn_circle()
+			$GreenObject/Path2D/PathFollow2D/Exoplanet32X32.texture = load("res://Assets/planets/exoplanet32x32.png")
+			green_move = true
 
 
 
