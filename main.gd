@@ -63,7 +63,6 @@ func add_points():
 		if Input.is_action_just_pressed("1"):
 			points += round(points_increase/(red_path_follow.unit_offset + 1))
 			red_move = false
-			$RedObject/Path2D/PathFollow2D/Explosion.rotation = 0
 			animation.play("red")
 			yield(get_tree().create_timer(1.5), "timeout")
 			spawn_circle()
@@ -79,7 +78,6 @@ func add_points():
 		elif Input.is_action_just_pressed("2"):
 			points += round(points_increase/(yellow_path_follow.unit_offset + 1))
 			yellow_move = false
-			$YellowObject/Path2D/PathFollow2D/Explosion.rotation = 0
 			animation.play("yellow")
 			yield(get_tree().create_timer(1.5), "timeout")
 			spawn_circle()
@@ -95,7 +93,6 @@ func add_points():
 		elif Input.is_action_just_pressed("3"):
 			points += round(points_increase/(green_path_follow.unit_offset + 1))
 			green_move = false
-			$GreenObject/Path2D/PathFollow2D/Explosion.rotation = 0
 			animation.play("green")
 			yield(get_tree().create_timer(1.5), "timeout")
 			spawn_circle()
