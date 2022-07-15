@@ -371,7 +371,6 @@ texture = ExtResource( 9 )
 [node name="Explosion" type="Sprite" parent="YellowObject/Path2D/PathFollow2D"]
 position = Vector2( -28.9542, 23.0359 )
 rotation = -2.24285
-scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 hframes = 12
 
@@ -391,7 +390,6 @@ texture = ExtResource( 8 )
 [node name="Explosion" type="Sprite" parent="GreenObject/Path2D/PathFollow2D"]
 position = Vector2( -33.9068, -2.70752 )
 rotation = -1.52052
-scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 hframes = 12
 frame = 1
