@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://paths/path_green4.tres" type="Curve2D" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Assets/planets/org_shattered_planet.png" type="Texture" id=10]
 [ext_resource path="res://Assets/explosions/explosion-4.png" type="Texture" id=11]
 [ext_resource path="res://Assets/A Long Way.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/explode3.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/bad.wav" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 860
@@ -131,6 +133,54 @@ tracks/8/keys = {
 "update": 0,
 "values": [ 1 ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("GreenObject/Path2D/PathFollow2D/AudioStreamPlayer2D:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("RedObject/Path2D/PathFollow2D/AudioStreamPlayer2D:autoplay")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("RedObject/Path2D/PathFollow2D/AudioStreamPlayer2D:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("YellowObject/Path2D/PathFollow2D/AudioStreamPlayer2D:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "green"
@@ -170,6 +220,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 4, 5, 6, 7, 9, 10 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GreenObject/Path2D/PathFollow2D/AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -211,6 +273,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 1, 2, 3, 4, 5, 6, 7, 9, 10 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("RedObject/Path2D/PathFollow2D/AudioStreamPlayer2D:autoplay")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RedObject/Path2D/PathFollow2D/AudioStreamPlayer2D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "yellow"
@@ -250,6 +336,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 4, 5, 6, 8, 9, 10 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YellowObject/Path2D/PathFollow2D/AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -354,6 +452,12 @@ rotation = 1.74107
 texture = ExtResource( 11 )
 hframes = 12
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RedObject/Path2D/PathFollow2D"]
+position = Vector2( 457.629, 76.6547 )
+rotation = -2.29927
+stream = ExtResource( 13 )
+autoplay = true
+
 [node name="YellowObject" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="YellowObject"]
@@ -373,6 +477,9 @@ position = Vector2( -28.9542, 23.0359 )
 rotation = -2.24285
 texture = ExtResource( 11 )
 hframes = 12
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="YellowObject/Path2D/PathFollow2D"]
+stream = ExtResource( 13 )
 
 [node name="GreenObject" type="Node2D" parent="."]
 
@@ -394,10 +501,19 @@ texture = ExtResource( 11 )
 hframes = 12
 frame = 1
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GreenObject/Path2D/PathFollow2D"]
+position = Vector2( 134.589, -645.051 )
+rotation = 0.722331
+scale = Vector2( 1, 1 )
+stream = ExtResource( 13 )
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 530, 313 )
 stream = ExtResource( 12 )
 autoplay = true
+
+[node name="bad" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 6 )

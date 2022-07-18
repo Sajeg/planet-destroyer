@@ -28,22 +28,25 @@ func _process(_delta):
 	$Label.text = "Points: " + str(points)
 	if CircleColor == "Red":
 		if red_path_follow.unit_offset >= 0.95:
+			get_tree().change_scene("res://GameOver.tscn")
 			return
 		elif red_move == false:
 			return
-		red_path_follow.offset += 1
+		red_path_follow.offset += 3
 	if CircleColor == "Green":
 		if green_path_follow.unit_offset >= 0.95:
+			get_tree().change_scene("res://GameOver.tscn")
 			return
 		elif green_move == false:
 			return
-		green_path_follow.offset += 1
+		green_path_follow.offset += 3
 	if CircleColor == "Yellow":
 		if yellow_path_follow.unit_offset >= 0.95:
+			get_tree().change_scene("res://GameOver.tscn")
 			return
 		elif yellow_move == false:
 			return
-		yellow_path_follow.offset += 1
+		yellow_path_follow.offset += 3
 
 func timer():
 	for i in 59:
@@ -70,11 +73,14 @@ func add_points():
 			red_move = true
 		elif Input.is_action_just_pressed("2"):
 			points -= points_decrease
+			$bad.play()
 		elif Input.is_action_just_pressed("3"):
 			points -= points_decrease
+			$bad.play()
 	elif CircleColor == "Yellow":
 		if Input.is_action_just_pressed("1"):
 			points -= points_decrease
+			$bad.play()
 		elif Input.is_action_just_pressed("2"):
 			points += round(points_increase/(yellow_path_follow.unit_offset + 1))
 			yellow_move = false
@@ -85,11 +91,14 @@ func add_points():
 			yellow_move = true
 		elif Input.is_action_just_pressed("3"):
 			points -= points_decrease
+			$bad.play()
 	elif CircleColor == "Green":
 		if Input.is_action_just_pressed("1"):
 			points -= points_decrease
+			$bad.play()
 		elif Input.is_action_just_pressed("2"):
 			points -= points_decrease
+			$bad.play()
 		elif Input.is_action_just_pressed("3"):
 			points += round(points_increase/(green_path_follow.unit_offset + 1))
 			green_move = false
