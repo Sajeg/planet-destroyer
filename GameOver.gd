@@ -48,3 +48,6 @@ func load_data():
 		file.close()
 		return 0
 		
+
+func _on_TouchScreenButton_pressed():
+	get_tree().change_scene("main.tscn")
